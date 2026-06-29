@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Coding tutorials for VEX Robotics Mt. SAC students">
   <meta name="author" content="Henry Tran">
-  <title>Mt.SAC | Coding Tutorials</title>
+  <title>Mt.SAC | PushBack 2025-2026</title>
 
   <link rel="icon" type="image/x-icon" href="static/images/mtsac.ico">
 
@@ -53,21 +53,37 @@
   <hr class="divider">
 
   <!-- GALLERY -->
-  <div class="section carousel-section" id="vex-u-world-2026">
+  <div class="carousel-section" id="vex-u-world-2026">
     <div class="section-label">Our Memories</div>
     <div class="section-title">St. Louis, USA · April 2026</div>
-    <div class="carousel-track">
-      <div class="carousel-item">
-        <img src="static/images/world1.JPG" alt="World 1" loading="lazy">
+
+    <div class="carousel" id="carousel">
+
+      <!-- ── Slides ── -->
+      <!-- To add more photos: copy a .carousel-slide block, change src and alt -->
+      <div class="carousel-slide active">
+        <img src="static/images/world1.JPG" alt="World 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="static/images/world2.JPEG" alt="World 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="static/images/world3.JPG" alt="World 3">
+      </div>
+      <div class="carousel-slide">
+        <img src="static/images/world4.JPEG" alt="World 4">
       </div>
 
-      <div class="carousel-item">
-        <img src="static/images/world2.JPEG" alt="World 2" loading="lazy">
-      </div>
+      <!-- Controls -->
+      <button class="carousel-arrow carousel-arrow-left" id="carouselPrev" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-arrow carousel-arrow-right" id="carouselNext" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
 
-      <div class="carousel-item">
-        <img src="static/images/world3.JPG" alt="World 3" loading="lazy">
-      </div>
+      <!-- Dots -->
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
 
@@ -80,16 +96,52 @@
     © 2026 Henry Tran
   </footer>
 
-  <!-- SCROLL TO TOP -->
+  <!-- SCROLL TO TOP
   <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
-  </button>
+  </button> -->
 
   <script>
     const btn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 300);
     });
+
+
+
+    // ── Carousel ──
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+    let current = 0;
+    let autoTimer;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dotsContainer.children[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dotsContainer.children[current].classList.add('active');
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+
+    resetTimer();
 
     function copyCode() {
       const text = document.getElementById('bibtex-code').innerText;
