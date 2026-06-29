@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Documentations for Mt.SAC Robotics Students">
+  <meta name="description" content="Coding tutorials for VEX Robotics Mt. SAC students">
   <meta name="author" content="Henry Tran">
   <title>Mt.SAC | PushBack 2025-2026</title>
-
   <link rel="icon" type="image/x-icon" href="static/images/mtsac.ico">
 
   <!-- Fonts -->
@@ -27,7 +26,12 @@
   <!-- NAV -->
   <nav>
     <span class="nav-brand">mtsac_vex_robotics</span>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#documentation">Documentation</a></li>
       <li><a href="#vex-u-world-2026">VEX-U World 2026</a></li>
     </ul>
@@ -38,13 +42,14 @@
     <h1>Hi folks, hope you find this helpful!</h1>
     <div class="hero-btns">
       <a href="#documentation" class="btn btn-primary">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Overleaf_Logo.svg" alt="Overleaf" style="height: 1em; vertical-align: middle;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Overleaf_Logo.svg" alt="Overleaf" style="height:1em;vertical-align:middle;">
         Documentation Archive
       </a>
-      <a href="https://github.com/henrytran07/mtsac_tutorial" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Push Back 2025–2026 Code</a>
-      
+      <a href="https://github.com/henrytran07/mtsac_tutorial" target="_blank" class="btn btn-outline">
+        <i class="fab fa-github"></i> Push Back 2025–2026 Code
+      </a>
       <a href="#vex-u-world-2026" class="btn btn-vex-world">
-        <img src="static/images/VEX-Robotics.png" alt="VEX U Push Back 2025-2026" style="height: 2.5em; vertical-align: middle;">
+        <img src="static/images/VEX-Robotics.png" alt="VEX U Push Back 2025-2026" style="height:2.5em;vertical-align:middle;">
         Worlds 2026
       </a>
     </div>
@@ -58,9 +63,6 @@
     <div class="section-title">St. Louis, USA · April 2026</div>
 
     <div class="carousel" id="carousel">
-
-      <!-- ── Slides ── -->
-      <!-- To add more photos: copy a .carousel-slide block, change src and alt -->
       <div class="carousel-slide active">
         <img src="static/images/world1.JPG" alt="World 1">
       </div>
@@ -74,7 +76,6 @@
         <img src="static/images/world4.JPEG" alt="World 4">
       </div>
 
-      <!-- Controls -->
       <button class="carousel-arrow carousel-arrow-left" id="carouselPrev" aria-label="Previous">
         <i class="fas fa-chevron-left"></i>
       </button>
@@ -82,40 +83,50 @@
         <i class="fas fa-chevron-right"></i>
       </button>
 
-      <!-- Dots -->
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
 
   <hr class="divider">
 
-
-
   <!-- FOOTER -->
   <footer>
-    © 2026 Henry Tran
+    &copy; 2026 Henry Tran
   </footer>
 
-  <!-- SCROLL TO TOP
   <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
-  </button> -->
+  </button>
 
   <script>
+    // ── Scroll to top ──
     const btn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
       btn.classList.toggle('visible', window.scrollY > 300);
     });
 
+    // ── Hamburger toggle ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
 
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
 
     // ── Carousel ──
-    const slides = document.querySelectorAll('.carousel-slide');
+    const slides        = document.querySelectorAll('.carousel-slide');
     const dotsContainer = document.getElementById('carouselDots');
-    let current = 0;
+    let current  = 0;
     let autoTimer;
 
-    // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -140,17 +151,7 @@
 
     document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
     document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
-
     resetTimer();
-
-    function copyCode() {
-      const text = document.getElementById('bibtex-code').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const b = document.querySelector('.copy-btn');
-        b.textContent = 'Copied!';
-        setTimeout(() => b.textContent = 'Copy', 2000);
-      });
-    }
   </script>
 
 </body>
