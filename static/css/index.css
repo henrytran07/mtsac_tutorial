@@ -338,22 +338,3 @@ footer {
 }
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-top:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ── Responsive tweaks ── */
- 
-/* Small phones: stack nav vertically if needed */
-@media (max-width: 380px) {
-  nav {
-    flex-direction: column;
-    height: auto;
-    padding: 0.6rem 1rem;
-    gap: 0.4rem;
-  }
-  .nav-links { gap: 0.6rem; }
-}
- 
-/* Hero buttons: single column on very small screens */
-@media (max-width: 360px) {
-  .hero-btns { flex-direction: column; width: 100%; }
-  .btn { justify-content: center; width: 100%; }
-}
