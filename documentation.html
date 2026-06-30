@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Documentation archive — Mt. SAC Robotics">
+  <meta name="author" content="Henry Tran">
+  <title>Docs | Mt.SAC Robotics</title>
+  <link rel="icon" type="image/x-icon" href="static/images/mtsac.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="static/css/fontawesome.all.min.css"></noscript>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/documentation.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">mtsac_vex_robotics</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <!-- <li><a href="index.html#documentation">Documentation</a></li> -->
+      <li><a href="index.html#vex-u-world-2026">VEX-U World 2026</a></li>
+      <li><a href="index.html">Back to Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- FILE ARCHIVE -->
+  <section class="doc-page">
+    <div class="section-label">Documentation</div>
+    <h1 class="section-title">File Archive</h1>
+
+    <div class="file-tree">
+      <div class="file-tree-header">
+        <i class="fas fa-folder-open"></i> docs/
+      </div>
+
+      <div class="file-tree-folder">
+        <div class="folder-label">
+          <i class="fas fa-folder"></i> Code/ <span class="folder-count">1</span>
+        </div>
+
+        <div class="file-row">
+          <i class="fas fa-file-alt"></i>
+          <a href="code/Mt.SAC_Big_Bot.zip" target="_blank" class="file-name">Mt. SAC BIG BOT — Source Code</a>
+          <span class="tag tag-personal">World 2026</span>
+          <a href="code/Mt.SAC_Big_Bot.zip" target="_blank" class="file-link"><i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Henry Tran
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    const btn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

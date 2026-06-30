@@ -62,6 +62,7 @@ nav {
   height: var(--nav-h);
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 /* ── Hamburger button ── */
@@ -272,6 +273,42 @@ nav {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.title-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.recap-link {
+  font-weight: 600;
+  color: rgb(142, 142, 241);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.recap-link:hover {
+  gap: 0.65em;
+  opacity: 0.8;
+}
+
+.recap-link i {
+  font-size: 0.85em;
 }
 
 /* ── Carousel arrows ── */

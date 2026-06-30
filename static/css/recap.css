@@ -1,0 +1,208 @@
+/* ── Hero ── */
+.recap-hero {
+  text-align: center;
+  padding: 5rem 1.5rem 2.5rem;
+}
+
+.recap-label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.75rem;
+}
+
+.recap-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.recap-title .accent,
+.section-title .accent {
+  color: #e63946;
+}
+
+.recap-subtitle {
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.75rem;
+  font-size: 1rem;
+}
+
+/* ── In-page tabs ── */
+.recap-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.recap-tabs a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.recap-tabs a:hover {
+  color: #fff;
+  border-color: #e63946;
+}
+
+/* ── Sections ── */
+.recap-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+
+.section-title.spaced {
+  margin-top: 3rem;
+}
+
+/* ── Grid layout (text + image) ── */
+.recap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.recap-grid.reverse {
+  direction: rtl;
+}
+
+.recap-grid.reverse > * {
+  direction: ltr;
+}
+
+.recap-text h3,
+.recap-card h3 {
+  font-size: 1.1rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.recap-text h3:first-child,
+.recap-card h3:first-child {
+  margin-top: 0;
+}
+
+.recap-highlight {
+  color: #e63946;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.recap-subhead {
+  font-weight: 600;
+  margin-top: 1.25rem;
+}
+
+.recap-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+}
+
+.recap-list li {
+  margin-bottom: 0.5rem;
+}
+
+.recap-card {
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.recap-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Stat cards ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #e63946;
+}
+
+.stat-suffix {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.stat-caption {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.recap-callout {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid #e63946;
+  border-radius: 6px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ── Back link ── */
+.recap-footer-link {
+  text-align: center;
+  padding: 1rem 1.5rem 2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .recap-grid,
+  .recap-grid.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .stat-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-matches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .overview-matches-grid {
+    grid-template-columns: 1fr;
+  }
+}
