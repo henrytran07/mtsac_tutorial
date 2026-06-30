@@ -1,2 +1,2 @@
 # Mt.SAC Robotics Website
-The place where we documented all experiences we have collected in PushBack season
+This is the place where we documented all the experiences we gained during the Push Back season.

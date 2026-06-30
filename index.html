@@ -60,7 +60,7 @@
   <!-- GALLERY -->
   <div class="carousel-section" id="vex-u-world-2026">
     <div class="section-label">Our Memories</div>
-    <div class="section-title">St. Louis, USA · April 2026</div>
+    <div class="section-title">St. Louis, Missouri, USA · April 2026</div>
 
     <div class="carousel" id="carousel">
       <div class="carousel-slide active">
@@ -84,9 +84,34 @@
       </button>
 
       <div class="carousel-dots" id="carouselDots"></div>
+
     </div>
   </div>
 
+<div class="carousel-section" id="ez-comp">
+    <div class="section-title">EZ Competition · March 2026</div>
+
+    <div class="carousel" id="carousel-ez">
+      <div class="carousel-slide active">
+        <img src="static/images/ez_comp1.webp" alt="EZ Competition 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="static/images/ez_comp2.webp" alt="EZ Competition 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="static/images/ez_comp3.webp" alt="EZ Competition 3">
+      </div>
+
+      <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-arrow carousel-arrow-right" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="carousel-dots"></div>
+    </div>
+  </div>
   <hr class="divider">
 
   <!-- FOOTER -->
@@ -98,33 +123,36 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <script>
-    // ── Scroll to top ──
-    const btn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 300);
+<script>
+  // ── Scroll to top ──
+  const btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // ── Hamburger toggle ──
+  const navToggle = document.getElementById('navToggle');
+  const navLinks  = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
     });
+  });
 
-    // ── Hamburger toggle ──
-    const navToggle = document.getElementById('navToggle');
-    const navLinks  = document.getElementById('navLinks');
-
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-
-    // ── Carousel ──
-    const slides        = document.querySelectorAll('.carousel-slide');
-    const dotsContainer = document.getElementById('carouselDots');
-    let current  = 0;
+  // ── Carousel (supports multiple independent carousels) ──
+  function initCarousel(carouselEl) {
+    const slides = carouselEl.querySelectorAll('.carousel-slide');
+    const dotsContainer = carouselEl.querySelector('.carousel-dots');
+    const prevBtn = carouselEl.querySelector('.carousel-arrow-left');
+    const nextBtn = carouselEl.querySelector('.carousel-arrow-right');
+    let current = 0;
     let autoTimer;
 
     slides.forEach((_, i) => {
@@ -149,10 +177,13 @@
       autoTimer = setInterval(() => goTo(current + 1), 4000);
     }
 
-    document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
     resetTimer();
-  </script>
+  }
+
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+</script>
 
 </body>
 </html>
